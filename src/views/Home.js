@@ -1,5 +1,5 @@
 //** Import Statements
-
+import StockContainer from '../components/StockContainer';
 //** Setup (define helper functions and variables here)
 
 function Home(props) {
@@ -11,6 +11,10 @@ function Home(props) {
 	//** Component Logic
 
 	//** Return JSX
-	return <div>{/*replace with your JSX Here */}</div>;
+	return (
+		<div>
+			<StockContainer />
+		</div>
+	);
 }
 export default Home;
