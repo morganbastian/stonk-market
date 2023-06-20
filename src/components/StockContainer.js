@@ -9,7 +9,7 @@ function StockContainer(props) {
 	//** State Variables
 	const [data, setData] = useState(null);
 	const [error, setError] = useState(null);
-	console.log(data);
+	//console.log(data);
 
 	//** Destructure Props
 	const {} = props;
@@ -39,7 +39,14 @@ function StockContainer(props) {
 	return (
 		<div>
 			{data.map((data) => {
-				return <h4>Ticker:{data.ticker}</h4>;
+				return (
+					<div>
+						<h4>Ticker: {data.ticker}</h4>
+						<h4>Number of Comments: {data.no_of_comments}</h4>
+						<h4>Sentiment: {data.sentiment}</h4>
+						<h4>Sentiment Score: {data.sentiment_score}</h4>
+					</div>
+				);
 			})}
 		</div>
 	);
