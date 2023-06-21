@@ -40,7 +40,7 @@ function ClickedStocks(props) {
 	//** Return JSX
 	return (
 		<div>
-			<h4>Symbol: {data.nvdadata['Global Quote']['01. symbol']}</h4>
+			<h4>Ticker: {data.nvdadata['Global Quote']['01. symbol']}</h4>
 			<h4>Price: {data.nvdadata['Global Quote']['05. price']}</h4>
 			<h4>
 				Previous Close: {data.nvdadata['Global Quote']['08. previous close']}
