@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 function StockContainer(props) {
 	//** Destructure Props
+
 	const {} = props;
 
 	//** State Variables
@@ -43,7 +44,7 @@ function StockContainer(props) {
 				return (
 					<div>
 						<h4>
-							<Link to='/info'>Ticker: {data.ticker}</Link>
+							<Link to={`/info/${data.ticker}`}>Ticker: {data.ticker}</Link>
 						</h4>
 						<h4>Number of Comments: {data.no_of_comments}</h4>
 						<h4>Sentiment: {data.sentiment}</h4>
