@@ -1,23 +1,26 @@
 //** Import Statements
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+
 //** Setup (define helper functions and variables here)
 
-function StockContainer(props) {
+function ClickedStocks(props) {
 	//** Destructure Props
-
+	const { symbol } = useParams();
 	const {} = props;
 
 	//** State Variables
 	const [data, setData] = useState(null);
 	const [error, setError] = useState(null);
-	//console.log(data);
+	console.log(data);
 
 	//** Destructure Props
 	const {} = props;
 	//** Component Logic
 	useEffect(() => {
-		fetch('https://tradestie.com/api/v1/apps/reddit')
+		fetch(
+			`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=T3DKNFX8EZJN7WS5`
+		)
 			.then((response) => {
 				if (!response.ok) {
 					setError({
@@ -36,23 +39,17 @@ function StockContainer(props) {
 	if (!data) {
 		return <div></div>;
 	}
-	//component logic
 	//** Return JSX
 	return (
 		<div>
-			{data.map((data) => {
-				return (
-					<div>
-						<h4>
-							<Link to={`/info/${data.ticker}`}>Ticker: {data.ticker}</Link>
-						</h4>
-						<h4>Number of Comments: {data.no_of_comments}</h4>
-						<h4>Sentiment: {data.sentiment}</h4>
-						<h4>Sentiment Score: {data.sentiment_score}</h4>
-					</div>
-				);
-			})}
+			<h4>Ticker: {data.nvdadata['Global Quote']['01. symbol']}</h4>
+			<h4>Price: {data.nvdadata['Global Quote']['05. price']}</h4>
+			<h4>
+				Previous Close: {data.nvdadata['Global Quote']['08. previous close']}
+			</h4>
+			<h4>Change: {data.nvdadata['Global Quote']['09. change']}</h4>
+			<h4>Volume: {data.nvdadata['Global Quote']['06. volume']}</h4>
 		</div>
 	);
 }
-export default StockContainer;
+export default ClickedStocks;
