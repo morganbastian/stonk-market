@@ -1,10 +1,12 @@
 //** Import Statements
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 //** Setup (define helper functions and variables here)
 
 function ClickedStocks(props) {
 	//** Destructure Props
+	const { symbol } = useParams();
 	const {} = props;
 
 	//** State Variables
@@ -17,7 +19,7 @@ function ClickedStocks(props) {
 	//** Component Logic
 	useEffect(() => {
 		fetch(
-			'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=NVDA&apikey=T3DKNFX8EZJN7WS5'
+			`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=T3DKNFX8EZJN7WS5`
 		)
 			.then((response) => {
 				if (!response.ok) {
