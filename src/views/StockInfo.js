@@ -1,5 +1,5 @@
 //** Import Statements
-
+import ClickedStocks from '../components/ClickedStock';
 //** Setup (define helper functions and variables here)
 
 function StockInfo(props) {
@@ -11,6 +11,10 @@ function StockInfo(props) {
 	//** Component Logic
 
 	//** Return JSX
-	return <div>{/*replace with your JSX Here */}</div>;
+	return (
+		<div>
+			<ClickedStocks />
+		</div>
+	);
 }
 export default StockInfo;
