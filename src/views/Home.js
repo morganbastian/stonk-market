@@ -1,4 +1,5 @@
 //** Import Statements
+import { Paper } from '@mui/material';
 import StockContainer from '../components/StockContainer';
 //** Setup (define helper functions and variables here)
 
@@ -13,7 +14,9 @@ function Home(props) {
 	//** Return JSX
 	return (
 		<div>
-			<StockContainer />
+			<Paper>
+				<StockContainer />
+			</Paper>
 		</div>
 	);
 }
