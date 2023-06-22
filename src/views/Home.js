@@ -1,5 +1,5 @@
 //** Import Statements
-import { Paper } from '@mui/material';
+import { Paper, Container } from '@mui/material';
 import StockContainer from '../components/StockContainer';
 //** Setup (define helper functions and variables here)
 
@@ -15,7 +15,9 @@ function Home(props) {
 	return (
 		<div>
 			<Paper>
-				<StockContainer />
+				<Container sx={{ bgcolor: '#cfe8fc', height: '100vh' }}>
+					<StockContainer />
+				</Container>
 			</Paper>
 		</div>
 	);
