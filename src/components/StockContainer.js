@@ -1,4 +1,5 @@
 //** Import Statements
+import { Typography, Card } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 //** Setup (define helper functions and variables here)
@@ -43,12 +44,14 @@ function StockContainer(props) {
 			{data.map((data) => {
 				return (
 					<div>
-						<h4>
-							<Link to={`/info/${data.ticker}`}>Ticker: {data.ticker}</Link>
-						</h4>
-						<h4>Number of Comments: {data.no_of_comments}</h4>
-						<h4>Sentiment: {data.sentiment}</h4>
-						<h4>Sentiment Score: {data.sentiment_score}</h4>
+						<Card sx={{ maxWidth: 250, padding: 3 }} variant='outlined'>
+							<h4>
+								<Link to={`/info/${data.ticker}`}>Ticker: {data.ticker}</Link>
+							</h4>
+							<h4>Number of Comments: {data.no_of_comments}</h4>
+							<h4>Sentiment: {data.sentiment}</h4>
+							<h4>Sentiment Score: {data.sentiment_score}</h4>
+						</Card>
 					</div>
 				);
 			})}
