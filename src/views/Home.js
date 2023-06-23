@@ -49,15 +49,15 @@ function Home(props) {
 		<div>
 			<button onClick={handleSort}>Sort</button>
 			<div>
-				{data.map((data) => {
+				{data.map((stock) => {
 					return (
 						<div>
 							<h4>
-								<Link to={`/info/${data.ticker}`}>Ticker: {data.ticker}</Link>
+								<Link to={`/info/${stock.ticker}`}>Ticker: {stock.ticker}</Link>
 							</h4>
-							<h4>Number of Comments: {data.no_of_comments}</h4>
-							<h4>Sentiment: {data.sentiment}</h4>
-							<h4>Sentiment Score: {data.sentiment_score}</h4>
+							<h4>Number of Comments: {stock.no_of_comments}</h4>
+							<h4>Sentiment: {stock.sentiment}</h4>
+							<h4>Sentiment Score: {stock.sentiment_score}</h4>
 						</div>
 					);
 				})}
