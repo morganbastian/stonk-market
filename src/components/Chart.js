@@ -26,16 +26,16 @@ function Chart(props) {
 
 	useEffect(() => {
 		fetch(
-			`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${symbol}&apikey=T3DKNFX8EZJN7WS5`
+			'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=NVDA&apikey=T3DKNFX8EZJN7WS5'
 		)
-			.then((response) => {
-				if (!response.ok) {
+			.then((response2) => {
+				if (!response2.ok) {
 					setError({
-						status: response.status,
-						statusText: response.statusText,
+						status: response2.status,
+						statusText: response2.statusText,
 					});
 				}
-				return response.json(); // parse the response data
+				return response2.json(); // parse the response data
 			})
 			.then((result) => setData(result)) // set state when the data received
 			.catch((err) => err); // return the error
