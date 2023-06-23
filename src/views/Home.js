@@ -16,12 +16,10 @@ function Home(props) {
 	//** Return JSX
 	return (
 		<div>
-			<Paper>
-				<Header />
-				<Container sx={{ bgcolor: '#cfe8fc', height: '100%' }}>
-					<StockContainer />
-				</Container>
-			</Paper>
+			<Header />
+			<Container sx={{ bgcolor: '#cfe8fc', height: '100%' }}>
+				<StockContainer />
+			</Container>
 		</div>
 	);
 }
