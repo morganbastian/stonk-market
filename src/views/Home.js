@@ -12,22 +12,11 @@ function Home(props) {
 
 	const [data, setData] = useState([]);
 	const [error, setError] = useState(null);
-	const [sortType, setSortType] = useState('sentiment score');
+	const [sort, setSort] = useState('');
 
-	useEffect(() => {
-		const sortArray = (type) => {
-			const types = {
-				sentiment_score: 'sentiment score',
-			};
-			const sortProperty = types[type];
-			const sorted = [...data].sort(
-				(a, b) => b[sortProperty] - a[sortProperty]
-			);
-			setData(sorted);
-		};
-
-		sortArray(sortType);
-	}, [sortType]);
+	const handleSort = () => {
+		setSort([...data].sort((a, b) => b.sentiment_score - a.sentiment_score));
+	};
 
 	console.log(data);
 	useEffect(() => {
@@ -57,13 +46,7 @@ function Home(props) {
 	//** Return JSX
 	return (
 		<div>
-			<select onChange={(e) => setSortType(e.target.value)}>
-				<option value='' disabled selected hidden>
-					Sort by
-				</option>
-				<option value='high-sentiment'>Highest Sentiment Score</option>
-				<option value='low-sentiment'>Lowest Sentiment Score</option>
-			</select>
+			<button onClick={handleSort}>Sort</button>
 			<div>
 				{data.map((data) => {
 					return (

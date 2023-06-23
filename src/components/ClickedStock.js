@@ -19,7 +19,7 @@ function ClickedStocks(props) {
 	//** Component Logic
 	useEffect(() => {
 		fetch(
-			`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=T3DKNFX8EZJN7WS5`
+			`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${process.env.REACT_APP_API_KEY}`
 		)
 			.then((response) => {
 				if (!response.ok) {

@@ -5,35 +5,27 @@ function Filter(props) {
 
 	//** State Variables
 	const [data, setData] = useState([]);
-	const [sortType, setSortType] = useState('high-sentiment');
+	const [sort, setSort] = useState('');
 	//console.log('data:', stockdata);
 
-	useEffect(() => {
-		const sortArray = (type) => {
-			const types = {
-				sentiment_score: 'sentiment-score',
-			};
-			const sortProperty = types[type];
-			const sorted = [...stockdata].sort(
-				(a, b) => b[sortProperty] - a[sortProperty]
-			);
-			setData(sorted);
-		};
-
-		sortArray(sortType);
-	}, [sortType]);
+	const handleSort = () => {
+		setSort(
+			[...stockdata].sort((a, b) => b.sentiment_score - a.sentiment_score)
+		);
+	};
+	// useEffect(() => {
+	// 	const handleSort = () => {
+	// 		setSort(
+	// 			[...stockdata].sort((a, b) => b.sentiment_score - a.sentiment_score)
+	// 		);
+	// 	};
+	// }, [sort]);
 	//** Component Logic
 
 	//** Return JSX
 	return (
 		<div>
-			<select onChange={(e) => setSortType(e.target.value)}>
-				<option value='' disabled selected hidden>
-					Sort by
-				</option>
-				<option value='high-sentiment'>Highest Sentiment Score</option>
-				<option value='low-sentiment'>Lowest Sentiment Score</option>
-			</select>
+			<button onClick={handleSort}>Sort</button>
 		</div>
 	);
 }
