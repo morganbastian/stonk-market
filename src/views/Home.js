@@ -13,10 +13,11 @@ function Home(props) {
 	const [data, setData] = useState([]);
 	const [error, setError] = useState(null);
 	const [sort, setSort] = useState('');
-
+	// useEffect(() => {
 	const handleSort = () => {
 		setSort([...data].sort((a, b) => b.sentiment_score - a.sentiment_score));
 	};
+	// }, [sort]);
 
 	console.log(data);
 	useEffect(() => {
