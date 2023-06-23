@@ -20,7 +20,7 @@ function ClickedStocks(props) {
 	//** Component Logic
 	useEffect(() => {
 		fetch(
-			`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=T3DKNFX8EZJN7WS5`
+			`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${process.env.REACT_APP_API_KEY}`
 		)
 			.then((response) => {
 				if (!response.ok) {
@@ -44,13 +44,11 @@ function ClickedStocks(props) {
 	return (
 		<div>
 			<Card sx={{ maxWidth: 250, padding: 3, margin: 0 }} variant='outlined'>
-				<h4>Ticker: {data.nvdadata['Global Quote']['01. symbol']}</h4>
-				<h4>Price: {data.nvdadata['Global Quote']['05. price']}</h4>
-				<h4>
-					Previous Close: {data.nvdadata['Global Quote']['08. previous close']}
-				</h4>
-				<h4>Change: {data.nvdadata['Global Quote']['09. change']}</h4>
-				<h4>Volume: {data.nvdadata['Global Quote']['06. volume']}</h4>
+				<h4>Ticker: {data['Global Quote']['01. symbol']}</h4>
+				<h4>Price: {data['Global Quote']['05. price']}</h4>
+				<h4>Previous Close: {data['Global Quote']['08. previous close']}</h4>
+				<h4>Change: {data['Global Quote']['09. change']}</h4>
+				<h4>Volume: {data['Global Quote']['06. volume']}</h4>
 			</Card>
 		</div>
 	);
