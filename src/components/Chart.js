@@ -1,10 +1,16 @@
-//** Import Statements
+import {
+	Tooltip,
+	ResponsiveContainer,
+	AreaChart,
+	XAxis,
+	YAxis,
+	CartesianGrid,
+} from 'recharts';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-
 //** Setup (define helper functions and variables here)
 
-function ClickedStocks(props) {
+function Chart(props) {
 	//** Destructure Props
 	const { symbol } = useParams();
 	const {} = props;
@@ -17,9 +23,10 @@ function ClickedStocks(props) {
 	//** Destructure Props
 	const {} = props;
 	//** Component Logic
+
 	useEffect(() => {
 		fetch(
-			`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=T3DKNFX8EZJN7WS5`
+			`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${symbol}&apikey=T3DKNFX8EZJN7WS5`
 		)
 			.then((response) => {
 				if (!response.ok) {
@@ -40,16 +47,6 @@ function ClickedStocks(props) {
 		return <div></div>;
 	}
 	//** Return JSX
-	return (
-		<div>
-			<h4>Ticker: {data.nvdadata['Global Quote']['01. symbol']}</h4>
-			<h4>Price: {data.nvdadata['Global Quote']['05. price']}</h4>
-			<h4>
-				Previous Close: {data.nvdadata['Global Quote']['08. previous close']}
-			</h4>
-			<h4>Change: {data.nvdadata['Global Quote']['09. change']}</h4>
-			<h4>Volume: {data.nvdadata['Global Quote']['06. volume']}</h4>
-		</div>
-	);
+	return <div>Hello</div>;
 }
-export default ClickedStocks;
+export default Chart;

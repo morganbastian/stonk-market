@@ -1,5 +1,6 @@
 //** Import Statements
 import ClickedStocks from '../components/ClickedStock';
+import Chart from '../components/Chart';
 //** Setup (define helper functions and variables here)
 
 function StockInfo(props) {
@@ -14,6 +15,7 @@ function StockInfo(props) {
 	return (
 		<div>
 			<ClickedStocks />
+			<Chart />
 		</div>
 	);
 }
