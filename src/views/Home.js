@@ -12,12 +12,22 @@ function Home(props) {
 
 	const [data, setData] = useState([]);
 	const [error, setError] = useState(null);
-	const [sort, setSort] = useState('');
-	// useEffect(() => {
-	const handleSort = () => {
-		setSort([...data].sort((a, b) => b.sentiment_score - a.sentiment_score));
+	const [sort, setSort] = useState('asc');
+
+
+  const handleSort = () => {
+    if (sort === 'dsc') {
+      // make it descending
+      console.log('currently descending')
+      setSort('asc')
+      setData(data.sort((a, b) => b.sentiment_score - a.sentiment_score));
+    } else {
+      // make it ascending
+      console.log('currently ascending')
+      setSort('dsc')
+      setData(data.sort((a, b) => a.sentiment_score - b.sentiment_score));
+    }
 	};
-	// }, [sort]);
 
 	console.log(data);
 	useEffect(() => {
@@ -31,7 +41,10 @@ function Home(props) {
 				}
 				return response.json(); // parse the response data
 			})
-			.then((result) => setData(result)) // set state when the data received
+			.then((result) => {
+
+        setData(result.sort((a, b) => a.sentiment_score - b.sentiment_score))
+      }) // set state when the data received
 			.catch((err) => err); // return the error
 	}, []);
 	// dependencies array is empty so the fetch request is only run once
@@ -47,7 +60,7 @@ function Home(props) {
 	//** Return JSX
 	return (
 		<div>
-			<button onClick={handleSort}>Sort</button>
+			<button onClick={handleSort}>Sort: {sort}</button>
 			<div>
 				{data.map((stock) => {
 					return (
