@@ -44,7 +44,10 @@ function StockContainer(props) {
 			{data.map((data) => {
 				return (
 					<div>
-						<Card sx={{ maxWidth: 250, padding: 3 }} variant='outlined'>
+						<Card
+							sx={{ maxWidth: 250, padding: 3, margin: 0 }}
+							variant='outlined'
+						>
 							<h4>
 								<Link to={`/info/${data.ticker}`}>Ticker: {data.ticker}</Link>
 							</h4>
