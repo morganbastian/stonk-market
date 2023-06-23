@@ -1,6 +1,7 @@
 //** Import Statements
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { Card } from '@mui/material';
 
 //** Setup (define helper functions and variables here)
 
@@ -42,13 +43,15 @@ function ClickedStocks(props) {
 	//** Return JSX
 	return (
 		<div>
-			<h4>Ticker: {data.nvdadata['Global Quote']['01. symbol']}</h4>
-			<h4>Price: {data.nvdadata['Global Quote']['05. price']}</h4>
-			<h4>
-				Previous Close: {data.nvdadata['Global Quote']['08. previous close']}
-			</h4>
-			<h4>Change: {data.nvdadata['Global Quote']['09. change']}</h4>
-			<h4>Volume: {data.nvdadata['Global Quote']['06. volume']}</h4>
+			<Card sx={{ maxWidth: 250, padding: 3, margin: 0 }} variant='outlined'>
+				<h4>Ticker: {data.nvdadata['Global Quote']['01. symbol']}</h4>
+				<h4>Price: {data.nvdadata['Global Quote']['05. price']}</h4>
+				<h4>
+					Previous Close: {data.nvdadata['Global Quote']['08. previous close']}
+				</h4>
+				<h4>Change: {data.nvdadata['Global Quote']['09. change']}</h4>
+				<h4>Volume: {data.nvdadata['Global Quote']['06. volume']}</h4>
+			</Card>
 		</div>
 	);
 }
